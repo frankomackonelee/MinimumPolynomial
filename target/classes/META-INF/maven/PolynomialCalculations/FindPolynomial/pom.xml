@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+	
+	<!-- groupId: This seems to define the folder in the repository -->
+  <groupId>PolynomialCalculations</groupId>
+  	<!-- artifactId: This seems to the subfolder in the repository -->
+  <artifactId>FindPolynomial</artifactId>
+  	<!-- version: Then version forms a subfolder -->
+  <version>1.1</version>
+  <packaging>jar</packaging>
+	<!-- name: sets the name of the jar  -->
+  <name>PolynomialProducer</name>
+  
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+	<!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.11</version>
+	    <scope>test</scope>
+	</dependency>
+  </dependencies>
+  
+  <build>
+	  <plugins>
+		    
+		    <plugin>    
+		        <artifactId>maven-compiler-plugin</artifactId>
+		        <configuration>
+		        <!-- Setting the java version -->
+		            <source>1.8</source>
+		            <target>1.8</target>
+		        </configuration>
+		    </plugin>
+	   		
+	   		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+					<!-- specifies its main class in the MANIFEST.MF file in that jar file
+					this means that we can run InputFromCommandLine.class using:
+					C:\...\target>java -jar {name & version}.jar 
+					as opposed to:
+					C:\...\target>java -cp {name & version}.jar polynomialCalculation.InputFromCommandLine
+					-->
+						<manifest>
+							<mainClass>polynomialCalculation.InputFromCommandLine</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+	</plugins>
+  </build>
+</project>

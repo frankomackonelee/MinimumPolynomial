@@ -1,0 +1,10 @@
+tests\CheckedOperationsTest.class
+tests\PowersOfSurdTest.class
+tests\SimplificationTest.class
+tests\FindMax.class
+tests\FractionTest.class
+tests\MatrixTest.class
+tests\SurdTest.class
+tests\FractionTestFromFile.class
+tests\VariableData.class
+tests\PolynomialWithSurdSolutionTest.class
