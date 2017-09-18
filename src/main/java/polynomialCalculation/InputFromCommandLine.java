@@ -11,7 +11,8 @@ public class InputFromCommandLine {
 	public static void main(String[] args) {
 
 		System.out.println("This process will find you a polynomial with a solutions being the surd you specify");
-		System.out.println("Surd must be of the form of x = k*b^(0/n) + l*b^(1/n) + ... + m*b^((n-1)/n)");
+		System.out.println("Surd must be of the form of x = k + l*b^(1/n) + ... + m*b^((n-1)/n)");
+		System.out.println("Where b, n, k - m all represent integers");
 
 		try (Scanner scan = new Scanner(System.in)) {
 			
@@ -23,10 +24,19 @@ public class InputFromCommandLine {
 			
 			nthPowerMultiples = new int[nthPower];
 			for (int i = 0; i < nthPower; i++) {
-				String prompt = String.format("Chose the multiple of %1$d^(%2$d/%3$d)", base, i, nthPower);
-				
-				promptInputConfirm(scan, "multiple when numerator is " + i, 
-						prompt);
+				String prompt;
+				String confirmation;
+				if(i == 0){
+					prompt = "choose the integer component of the surd ie k above";
+					confirmation = "integer component (k) - ie when numerator in the power is " + i;
+				}else if(i == 1){
+					prompt = String.format("chose the multiple of %1$d^(%2$d/%3$d) ie l above", base, i, nthPower);
+					confirmation = "multiple when numerator in the power is " + i;
+				}else{
+					prompt = String.format("chose the multiple of %1$d^(%2$d/%3$d)", base, i, nthPower);
+					confirmation = "multiple when numerator of the power is " + i;
+				}
+				promptInputConfirm(scan, confirmation, prompt);
 			}
 
 			PolynomialWithSurdSolution myPolynomial = new PolynomialWithSurdSolution(base, nthPower, nthPowerMultiples);
@@ -67,6 +77,7 @@ public class InputFromCommandLine {
 				break;
 	
 			case "multiple":
+			case "integer":
 				nthPowerMultiples[index] = valueTaken;
 				break;
 				

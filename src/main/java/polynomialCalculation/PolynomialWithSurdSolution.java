@@ -57,9 +57,15 @@ public class PolynomialWithSurdSolution extends PowersOfSurd {
 	public String stringPolynomial(){
 		String answer = "";
 
-		for (int i = 0; i < this.nthPower + 1; i++) {
-			answer += i > 0 ? " + " : "";
-			answer += this.getPowerOfX(i) + "x^" +  i + " ";
+		for (int i = this.nthPower; i >= 0; i--) {
+			answer += i < this.nthPower ? " + " : "";
+			if(i == 0 ){
+				answer += this.getPowerOfX(i);
+			}else if(i == 1){
+				answer += this.getPowerOfX(i) + "x";
+			}else{
+				answer += this.getPowerOfX(i) + "x^" +  i + " ";
+			}
 		}
 		
 		return answer;
